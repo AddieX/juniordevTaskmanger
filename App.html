@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/css/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Junior Dev Task Manager | Addie</title>
+    <link rel="stylesheet" type="text/css" href="src/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="todo-box">
+        <div class="theme-toggle">
+          <button id="theme-toggle-btn" title="Toggle Dark/Light Mode">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="todo-header">
+          <h1>Junior Developer Task Manager</h1>
+          <p class="subtitle">
+            Organize your learning journey and coding tasks
+          </p>
+          <div id="error-message" class="error-message" style="display: none">
+            Please fill all required fields
+          </div>
+
+          <div class="progress-container">
+            <div class="progress-stats">
+              <div class="stat-item">
+                <span id="tasks-total">0</span>
+                <span class="stat-label">Total Tasks</span>
+              </div>
+              <div class="stat-item">
+                <span id="tasks-completed">0</span>
+                <span class="stat-label">Completed</span>
+              </div>
+              <div class="stat-item">
+                <span id="tasks-inprogress">0</span>
+                <span class="stat-label">In Progress</span>
+              </div>
+            </div>
+            <div class="progress-bar-container">
+              <div
+                id="progress-bar"
+                class="progress-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="coding">
+              Coding Practice
+            </button>
+            <button class="filter-btn" data-filter="learning">Learning</button>
+            <button class="filter-btn" data-filter="bug-fix">Bug Fix</button>
+            <button class="filter-btn" data-filter="documentation">Docs</button>
+          </div>
+          <form id="todo-form">
+            <div class="form-row">
+              <select id="task-type">
+                <option value="coding">Coding Practice</option>
+                <option value="learning">Learning</option>
+                <option value="bug-fix">Bug Fix</option>
+                <option value="documentation">Documentation</option>
+              </select>
+              <input
+                type="text"
+                id="todo-input"
+                placeholder="Add a new task..."
+                autocomplete="off"
+                maxlength="100"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <input type="date" id="due-date" required />
+              <select id="difficulty">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate" selected>Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <select id="priority">
+                <option value="low">Low Priority</option>
+                <option value="medium" selected>Medium Priority</option>
+                <option value="high">High Priority</option>
+              </select>
+              <input
+                type="text"
+                id="task-tags"
+                placeholder="Add skills (comma separated): html, css, js..."
+              />
+            </div>
+            <div class="form-row">
+              <textarea
+                id="task-notes"
+                placeholder="Additional notes or resources for this task..."
+                rows="2"
+              ></textarea>
+            </div>
+            <button type="submit">Add Task</button>
+          </form>
+        </div>
+        <div class="todo-list">
+          <ul id="todo-items"></ul>
+        </div>
+        <div class="resources-section">
+          <h3>Learning Resources</h3>
+          <div class="resource-tabs">
+            <button class="resource-tab active" data-resource="general">
+              General
+            </button>
+            <button class="resource-tab" data-resource="frontend">
+              Frontend
+            </button>
+            <button class="resource-tab" data-resource="backend">
+              Backend
+            </button>
+            <button class="resource-tab" data-resource="career">Career</button>
+          </div>
+          <div class="resource-content active" id="general-resources">
+            <ul class="resources-list">
+              <li>
+                <a href="https://developer.mozilla.org/en-US/" target="_blank"
+                  >MDN Web Docs</a
+                >
+              </li>
+              <li>
+                <a href="https://www.freecodecamp.org/" target="_blank"
+                  >freeCodeCamp</a
+                >
+              </li>
+              <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+              <li>
+                <a href="https://stackoverflow.com/" target="_blank"
+                  >Stack Overflow</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="resource-content" id="frontend-resources">
+            <ul class="resources-list">
+              <li>
+                <a href="https://reactjs.org/" target="_blank"
+                  >React Documentation</a
+                >
+              </li>
+              <li>
+                <a href="https://css-tricks.com/" target="_blank">CSS Tricks</a>
+              </li>
+              <li>
+                <a href="https://javascript.info/" target="_blank"
+                  >JavaScript.info</a
+                >
+              </li>
+              <li>
+                <a href="https://www.frontendmentor.io/" target="_blank"
+                  >Frontend Mentor</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="resource-content" id="backend-resources">
+            <ul class="resources-list">
+              <li>
+                <a href="https://nodejs.org/en/docs/" target="_blank"
+                  >Node.js Docs</a
+                >
+              </li>
+              <li>
+                <a href="https://expressjs.com/" target="_blank">Express.js</a>
+              </li>
+              <li>
+                <a href="https://www.mongodb.com/docs/" target="_blank"
+                  >MongoDB Docs</a
+                >
+              </li>
+              <li>
+                <a href="https://www.postgresql.org/docs/" target="_blank"
+                  >PostgreSQL</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="resource-content" id="career-resources">
+            <ul class="resources-list">
+              <li>
+                <a href="https://www.linkedin.com/learning/" target="_blank"
+                  >LinkedIn Learning</a
+                >
+              </li>
+              <li>
+                <a href="https://leetcode.com/" target="_blank">LeetCode</a>
+              </li>
+              <li>
+                <a href="https://www.hackerrank.com/" target="_blank"
+                  >HackerRank</a
+                >
+              </li>
+              <li>
+                <a href="https://roadmap.sh/" target="_blank"
+                  >Developer Roadmaps</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <script src="src/js/script.js"></script>
+      </div>
+    </div>
+  </body>
+</html>
