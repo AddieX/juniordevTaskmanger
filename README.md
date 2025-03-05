@@ -1,2 +1,3 @@
 # junioDev-Taskmanger
- Task, its like To-Do but i made this have more feauters and help junior developers
+
+Task Manager is an enhanced version of a To-Do list, offering additional features specifically designed to assist junior developers in managing their tasks efficiently
