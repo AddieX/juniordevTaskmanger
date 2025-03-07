@@ -101,6 +101,13 @@ function createTodoItem(
 
   const hasDetails = notes || (Array.isArray(tags) && tags.length > 0);
 
+  const taskDueDate = new Date(dueDate.value);
+  const formattedDate = taskDueDate.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
   li.innerHTML = `
               <div class="todo-main">
                 <input type="checkbox" class="todo-checkbox" ${
@@ -112,6 +119,7 @@ function createTodoItem(
                     <span class="task-type-badge" data-type="${type}">${type}</span>
                     <span class="priority-badge">${priority}</span>
                     <span class="difficulty-badge">${difficulty}</span>
+                    <span class="due-date">${formattedDate}</span>
                     ${
                       hasDetails
                         ? '<button class="toggle-details-btn">Details</button>'

@@ -924,3 +924,18 @@ body {
 .empty-state {
   display: none; /* Hide the empty state if it exists in the DOM */
 }
+
+.task-due-date {
+  font-size: 0.85rem;
+  margin-top: 5px;
+  color: var(--text-secondary);
+}
+
+.due-label {
+  font-weight: 500;
+}
+
+/* For tasks that are past due */
+.task-overdue .task-due-date {
+  color: var(--error-color, #e53935);
+}
