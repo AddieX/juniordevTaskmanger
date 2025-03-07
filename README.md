@@ -76,7 +76,7 @@ The app includes quick access to common resources for developers:
 ## 🔄 Upcoming Features
 
 - Pomodoro timer integration
-- Mobile app version (Workable after a long time)
+- Mobile app version (Not soon)
 
 ## 🤝 Contributing
 
