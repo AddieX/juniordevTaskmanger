@@ -75,11 +75,8 @@ The app includes quick access to common resources for developers:
 
 ## 🔄 Upcoming Features
 
-- Cloud synchronization
 - Pomodoro timer integration
-- GitHub integration for repository linking
-- Team collaboration features
-- Mobile app version
+- Mobile app version (Workable after a long time)
 
 ## 🤝 Contributing
 
